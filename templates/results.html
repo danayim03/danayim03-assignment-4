@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Latent Semantic Analysis (LSA) Search Engine</title>
+</head>
+<body>
+    <h1>Latent Semantic Analysis (LSA) Search Engine</h1>
+    <form action="/search" method="POST">
+        <input type="text" name="query" value="{{ query }}" placeholder="Enter search query">  <!-- Pre-fill the search bar with the user's query -->
+        <button type="submit">Search</button>
+    </form>
+
+    <h1>Search Results</h1>
+    <ul>
+        {% for i in range(5) %}
+        <li>
+            <h2>Document {{ top_docs[i][0] }}</h2>
+            <p>{{ doc_previews[i] }}...</p> <!-- Display a snippet from the document -->
+            <p>Similarity: {{ top_docs[i][1] }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Similarity Chart</h2>
+    <img src="data:image/png;base64,{{ plot_url }}">
+    <br>
+    <a href="/">Search again</a>
+</body>
+</html>
